@@ -30,6 +30,13 @@ use Test::More;
 }
 
 {
+  my $obj = My::Class->new( x => 2 );
+  is( $obj->x, 2, "Initial value exists" );
+  $obj->x(3);
+  is_deeply( $obj->x_history, [ 2, 3 ], "Initial value also exists in history" );
+}
+
+{
   package My::Class::Position;
   use Moose;
   extends 'My::Class';

@@ -1,0 +1,1 @@
+A Moose Trait for remembering the history of a variable. On each write, the new value is also stored in an extra array

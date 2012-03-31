@@ -24,7 +24,7 @@ around 'install_accessors' => sub {
 
   my $class = $attr->associated_class;
   my $hist_name = $attr->history_getter;
-  
+
   #add history holder
   $class->add_attribute(
     $hist_name => (
@@ -36,9 +36,21 @@ around 'install_accessors' => sub {
 
   $attr->$orig(@_);
 
-  my $writer_name = $attr->get_write_method;
+  # sync history on first access
+  $class->add_around_method_modifier($hist_name, sub{
+    my $orig = shift;
+    my $self = shift;
+    my $history = $self->$orig(@_);
+    unless (@$history) {
+      my $old_val = $attr->get_value($self);
+      push @$history, $old_val if defined $old_val;
+    }
+    return $history;
+  });
 
-  $class->add_after_method_modifier($writer_name, sub{
+  # push on to history on write
+  my $writer_name = $attr->get_write_method;
+  $class->add_before_method_modifier($writer_name, sub{
     my ($self, $value) = @_;
     return unless defined $value;
     my $history = $self->can($hist_name)->($self);
