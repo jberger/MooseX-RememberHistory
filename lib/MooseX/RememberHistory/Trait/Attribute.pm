@@ -2,9 +2,6 @@ package MooseX::RememberHistory::Trait::Attribute;
 
 use Moose::Role;
 
-our $VERSION = '0.001';
-$VERSION = eval $VERSION;
-
 has 'history_getter' => (
   isa => 'Str',
   is  => 'ro',
