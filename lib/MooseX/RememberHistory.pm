@@ -73,6 +73,10 @@ This name may be specified manually by the use of the C<history_name> attribute 
 
  my $hist = $obj->history_of_some_attr; # [ 0, 1 ]
 
+=head1 MOTIVATION
+
+The author wrote this module to ease the writing of object-oriented differential equation solver framework. When the objects store the history of their own evolution it eases the burden of writing the solver. The solver object only needs to evolve the constituent objects and it need not worry about storing the results; those objects can now do this themselves!
+
 =head1 SEE ALSO
 
 =over
@@ -86,10 +90,6 @@ L<Moose> - A postmodern object system for Perl 5
 L<Moose::Manual::Attributes/"Attribute-traits-and-metaclasses">
 
 =back
-
-=head1 MOTIVATION
-
-The author wrote this module to ease the writing of object-oriented differential equation solver framework. When the objects store the history of their own evolution it eases the burden of writing the solver. The solver object only needs to evolve the constituent objects and it need not worry about storing the results; those objects can now do this themselves!
 
 =head1 SOURCE REPOSITORY
 
