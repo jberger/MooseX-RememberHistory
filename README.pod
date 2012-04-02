@@ -24,7 +24,7 @@ MooseX::RememberHistory - Add the ability for attributes to remember their histo
 
 =head1 DESCRIPTION
 
-L<MooseX::RememberHisory> provides an attribute trait (C<RememberHistory>) which will automagically store the values of that attribute in a related ArrayRef on each write to the trait.
+L<MooseX::RememberHisory> provides an attribute trait (C<RememberHistory>) which will automagically store the values of that attribute in a related ArrayRef on each write to the attribute.
 
 =head1 THE HISTORY ATTRIBUTE
 
